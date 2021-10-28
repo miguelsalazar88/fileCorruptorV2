@@ -2,6 +2,7 @@ package modelo;
 
 import vista.Ventana;
 
+import javax.swing.*;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -62,6 +63,7 @@ public class Modelo {
         try (FileOutputStream stream = new FileOutputStream(archivo)) {
             stream.write(resultado); //Se escribe el archivo corrupto
         }
+        JOptionPane.showMessageDialog(null, "Archivo Exitosamente Encriptado");
     }
 
     public void desencriptarArchivo(String archivo, String encoder) throws IOException {
@@ -88,6 +90,8 @@ public class Modelo {
                 for (int j = 0; j < bytesEncoder.length; j++) {
                     bytesArray.remove(i);
                 }
+
+                JOptionPane.showMessageDialog(null, "Archivo Exitosamente Desencriptado");
             }
         }
 

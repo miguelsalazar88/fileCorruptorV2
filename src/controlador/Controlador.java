@@ -37,6 +37,7 @@ public class Controlador implements ActionListener {
 
             try {
                 this.modelo.encriptarArchivo(this.vista.getJTFArchivo().getText(),this.vista.getVentanaPasswordEncriptar().getJTFContrasenia().getText());
+                System.exit(0);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -45,6 +46,7 @@ public class Controlador implements ActionListener {
         if(e.getSource().equals(this.vista.getVentanaPasswordDesencriptar().getBotonContrasenia())){
             try {
                 this.modelo.desencriptarArchivo(this.vista.getJTFArchivo().getText(),this.vista.getVentanaPasswordDesencriptar().getJTFContrasenia().getText());
+                System.exit(0);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
