@@ -36,26 +36,16 @@ public class Controlador implements ActionListener {
         if(e.getSource().equals(this.vista.getVentanaPasswordEncriptar().getBotonContrasenia())){
 
             try {
-                if(this.modelo.checkPassword(this.vista.getVentanaPasswordEncriptar().getJTFContrasenia().getText())==true){
-                    this.modelo.encriptarArchivo(this.vista.getJTFArchivo().getText());
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Contraseña incorrecta");
-                }
-            } catch (NoSuchAlgorithmException | IOException ex) {
+                this.modelo.encriptarArchivo(this.vista.getJTFArchivo().getText(),this.vista.getVentanaPasswordEncriptar().getJTFContrasenia().getText());
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
 
         if(e.getSource().equals(this.vista.getVentanaPasswordDesencriptar().getBotonContrasenia())){
             try {
-                if(this.modelo.checkPassword(this.vista.getVentanaPasswordDesencriptar().getJTFContrasenia().getText())==true){
-                    this.modelo.desencriptarArchivo(this.vista.getJTFArchivo().getText());
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Contraseña incorrecta");
-                }
-            } catch (NoSuchAlgorithmException | IOException ex) {
+                this.modelo.desencriptarArchivo(this.vista.getJTFArchivo().getText(),this.vista.getVentanaPasswordDesencriptar().getJTFContrasenia().getText());
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }

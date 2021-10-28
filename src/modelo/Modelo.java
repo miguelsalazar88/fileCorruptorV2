@@ -37,10 +37,9 @@ public class Modelo {
         return encoded;
     }
 
-    public void encriptarArchivo(String archivo) throws IOException {
+    public void encriptarArchivo(String archivo,String encoder) throws IOException {
 
         byte[] fileBytes = Files.readAllBytes(Paths.get(archivo)); //Se reciben los bytes del archivo en un arreglo estático de bytes
-        String encoder = "anitalavalatina";
         byte[] bytesEncoder = encoder.getBytes();
 
         List<Byte> bytesArray = new ArrayList<>(); //Se crea un arraylist de bytes
@@ -60,23 +59,22 @@ public class Modelo {
             resultado[i] = bytesArray.get(i); //Se carga el arreglo con los datos del arraylist
         }
 
-        try (FileOutputStream stream = new FileOutputStream("src/files/claveDeFa2.png")) {
+        try (FileOutputStream stream = new FileOutputStream(archivo)) {
             stream.write(resultado); //Se escribe el archivo corrupto
         }
     }
 
-    public void desencriptarArchivo(String archivo) throws IOException {
+    public void desencriptarArchivo(String archivo, String encoder) throws IOException {
 
         byte[] fileBytes = Files.readAllBytes(Paths.get(archivo));
         List<Byte> bytesArray = new ArrayList<>();
-
+        byte[] bytesEncoder = encoder.getBytes();
 
 
         for (byte b : fileBytes) {
             bytesArray.add(b);
         }
 
-        String encoder = "anitalavalatina";
 
         for (int i = 0; i < bytesArray.size(); i++) {
             if(bytesArray.get(i) == (byte) encoder.charAt(0)
@@ -87,7 +85,7 @@ public class Modelo {
 
                 System.out.println("Eureka");
 
-                for (int j = 0; j <15 ; j++) {
+                for (int j = 0; j < bytesEncoder.length; j++) {
                     bytesArray.remove(i);
                 }
             }
@@ -98,7 +96,7 @@ public class Modelo {
             resultado[i] = bytesArray.get(i);
         }
 
-        try (FileOutputStream stream = new FileOutputStream("src/files/claveDeFa2.png")) {
+        try (FileOutputStream stream = new FileOutputStream(archivo)) {
             stream.write(resultado);
         }
 
