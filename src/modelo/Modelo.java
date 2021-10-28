@@ -43,19 +43,24 @@ public class Modelo {
         byte[] fileBytes = Files.readAllBytes(Paths.get(archivo)); //Se reciben los bytes del archivo en un arreglo estático de bytes
         byte[] bytesEncoder = encoder.getBytes();
 
-        List<Byte> bytesArray = new ArrayList<>(); //Se crea un arraylist de bytes
+        //Se crea un arraylist de bytes
+        List<Byte> bytesArray = new ArrayList<>();
 
+        // Se carga el arraylist de bytes con los datos del arreglo estático
         for (byte b : fileBytes) {
-            bytesArray.add(b); // Se carga el arraylist de bytes con los datos del arreglo estático
+            bytesArray.add(b);
         }
 
-        int rand = rnd.nextInt(bytesArray.size()); //Se crea un indice random para ubicar el encoder
+        //Se crea un indice random para ubicar el encoder
+        int rand = rnd.nextInt(bytesArray.size());
 
-        for (int i = 0; i < bytesEncoder.length; i++) {  //Se inserta el encoder en la ubicacion random
+        //Se inserta el encoder en la ubicacion random
+        for (int i = 0; i < bytesEncoder.length; i++) {
             bytesArray.add((rand+i),(byte) encoder.charAt(i));
         }
 
-        byte[] resultado = new byte[bytesArray.size()]; //Se crea un nuevo arreglo de bytes con el archivo corrupto
+        //Se crea un nuevo arreglo de bytes con el archivo corrupto
+        byte[] resultado = new byte[bytesArray.size()];
         for(int i = 0; i < bytesArray.size(); i++) {
             resultado[i] = bytesArray.get(i); //Se carga el arreglo con los datos del arraylist
         }
@@ -75,12 +80,12 @@ public class Modelo {
         //Se convierte la clave en un arreglo de bytes.
         byte[] bytesEncoder = encoder.getBytes();
 
-
+        //Se carga el ArrayList de Bytes con los datos en el arreglo estático
         for (byte b : fileBytes) {
             bytesArray.add(b);
         }
 
-
+        //Busca en el documento la clave convertida en bytes y remueve la clave
         for (int i = 0; i < bytesArray.size(); i++) {
             if(bytesArray.get(i) == (byte) encoder.charAt(0)
                     && bytesArray.get(i+1) == (byte) encoder.charAt(1)
@@ -90,13 +95,15 @@ public class Modelo {
 
                 System.out.println("Eureka");
 
+                //Se borra la clave del ArrayList de Bytes
                 for (int j = 0; j < bytesEncoder.length; j++) {
                     bytesArray.remove(i);
                 }
-
+                //Se reescribe el documento
                 JOptionPane.showMessageDialog(null, "Archivo Exitosamente Desencriptado");
             }
         }
+
 
         byte[] resultado = new byte[bytesArray.size()];
         for(int i = 0; i < bytesArray.size(); i++) {
@@ -110,5 +117,6 @@ public class Modelo {
 
 
     }
+
 
 }

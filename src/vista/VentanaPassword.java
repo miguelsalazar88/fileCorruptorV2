@@ -12,6 +12,7 @@ public class VentanaPassword extends JFrame {
     private JButton botonContrasenia = new JButton();
 
     public VentanaPassword(){
+        this.setLocationRelativeTo(null);
         this.setVisible(false);
         this.setLayout(null);
         this.setSize(500,200);

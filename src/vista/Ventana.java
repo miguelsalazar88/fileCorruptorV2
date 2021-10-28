@@ -17,6 +17,7 @@ public class Ventana extends JFrame {
     private VentanaPassword ventanaPasswordDesencriptar = new VentanaPassword();
 
     public Ventana(){
+        this.setLocationRelativeTo(null);
         this.setTitle("File Corruptor");
         this.setSize(500,400);
         this.setLayout(null);
@@ -24,6 +25,7 @@ public class Ventana extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
         this.initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     private void initComponents() {
@@ -40,6 +42,7 @@ public class Ventana extends JFrame {
         this.ventanaPasswordDesencriptar.setTitle("Desencriptar");
         this.ventanaPasswordEncriptar.getBotonContrasenia().setText("Encriptar");
         this.ventanaPasswordDesencriptar.getBotonContrasenia().setText("Desencriptar");
+        this.panel.repaint();
 
     }
 
