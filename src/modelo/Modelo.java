@@ -68,8 +68,11 @@ public class Modelo {
 
     public void desencriptarArchivo(String archivo, String encoder) throws IOException {
 
+        //Se convierte el archivo seleccionado a un arreglo de bytes
         byte[] fileBytes = Files.readAllBytes(Paths.get(archivo));
+        //Se crea un ArrayList<Byte> en el que se almacena el arreglo de bytes.
         List<Byte> bytesArray = new ArrayList<>();
+        //Se convierte la clave en un arreglo de bytes.
         byte[] bytesEncoder = encoder.getBytes();
 
 

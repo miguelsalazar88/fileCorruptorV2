@@ -18,7 +18,7 @@ public class Ventana extends JFrame {
 
     public Ventana(){
         this.setTitle("File Corruptor");
-        this.setSize(500,200);
+        this.setSize(500,400);
         this.setLayout(null);
         this.getContentPane().setBackground(Color.lightGray);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,13 +29,13 @@ public class Ventana extends JFrame {
     private void initComponents() {
         this.add(panel);
         this.add(botonEncriptar);
-        this.botonEncriptar.setBounds(340,85,150,30);
+        this.botonEncriptar.setBounds(340,85+200,150,30);
         this.add(botonDesencriptar);
-        this.botonDesencriptar.setBounds(340,115,150,30);
+        this.botonDesencriptar.setBounds(340,115+200,150,30);
         this.add(labelArchivo);
-        this.labelArchivo.setBounds(10,100,80,30);
+        this.labelArchivo.setBounds(10,100+200,80,30);
         this.add(JTFArchivo);
-        this.JTFArchivo.setBounds(90,100,250,30);
+        this.JTFArchivo.setBounds(90,100+200,250,30);
         this.ventanaPasswordEncriptar.setTitle("Encriptar");
         this.ventanaPasswordDesencriptar.setTitle("Desencriptar");
         this.ventanaPasswordEncriptar.getBotonContrasenia().setText("Encriptar");

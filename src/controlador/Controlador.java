@@ -26,17 +26,34 @@ public class Controlador implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource().equals(this.vista.getBotonEncriptar())){
-            this.vista.getVentanaPasswordEncriptar().setVisible(true);
+
+            if(!this.vista.getJTFArchivo().getText().equals("")){
+                //Se abre la ventana que pide la clave para encriptar.
+                this.vista.getVentanaPasswordEncriptar().setVisible(true);
+            }
+
+            else{
+                JOptionPane.showMessageDialog(null,"No hay datos del Archivo");
+            }
         }
 
         if(e.getSource().equals(this.vista.getBotonDesencriptar())){
-            this.vista.getVentanaPasswordDesencriptar().setVisible(true);
+            if(!this.vista.getJTFArchivo().getText().equals("")){
+                //Se abre la ventana que pide la clave para encriptar.
+                this.vista.getVentanaPasswordDesencriptar().setVisible(true);
+            }
+
+            else{
+                JOptionPane.showMessageDialog(null,"No hay datos del Archivo");
+            }
         }
 
         if(e.getSource().equals(this.vista.getVentanaPasswordEncriptar().getBotonContrasenia())){
 
             try {
+                // Se encripta el archivo
                 this.modelo.encriptarArchivo(this.vista.getJTFArchivo().getText(),this.vista.getVentanaPasswordEncriptar().getJTFContrasenia().getText());
+                // Se cierra el programa
                 System.exit(0);
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -45,7 +62,9 @@ public class Controlador implements ActionListener {
 
         if(e.getSource().equals(this.vista.getVentanaPasswordDesencriptar().getBotonContrasenia())){
             try {
+                // Se desencripta el archivo
                 this.modelo.desencriptarArchivo(this.vista.getJTFArchivo().getText(),this.vista.getVentanaPasswordDesencriptar().getJTFContrasenia().getText());
+                //Se cierra el programa
                 System.exit(0);
             } catch (IOException ex) {
                 ex.printStackTrace();
